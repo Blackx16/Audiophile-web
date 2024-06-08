@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Form Format Validation</title>
+<script language="javascript" type="text/javascript">
+
+function four() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var subject = document.getElementById("subject").value;
+    var message = document.getElementById("message").value;
+
+    if (!isValidName(name)) {
+        alert("Invalid name. Name should not contain numbers or special characters.");
+        return false;
+    }
+
+    if (!isValidEmail(email)) {
+        alert("Invalid email. Please enter a valid email address.");
+        return false;
+    }
+
+    if (isEmpty(name) || isEmpty(email) || isEmpty(subject) || isEmpty(message)) {
+        alert("Please fill all the fields.");
+        return false;
+    }
+
+    alert("Form submitted successfully.");
+    return true;
+}
+
+function isValidName(name) {
+    var regex = /^[a-zA-Z\s]+$/;
+    return regex.test(name);
+}
+
+function isValidEmail(email) {
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function isEmpty(value) {
+    return value.trim() === "";
+}
+
+
+</script>
+</head>
+
+<body>
+<form name='frm1'>
+Name: <input type="text" id="name">
+<br>
+Email: <input type="text" id="email">
+<br>
+Subject: <input type="text" id="subject">
+<br>
+Message: <input type="text" id="message">
+<br>
+<input type="button" value="Click" onclick="four()">
+</form>
+</body>
+</html>
